@@ -1,66 +1,35 @@
-# Smarteaming — Case Study
+# Smarteaming
 
-> Production workforce scheduling platform.
-> Source code is private for commercial reasons.
+Scheduling, shifts, invoicing and payroll for companies with shift-based teams. In production since 2020 at [smarteaming.com](https://smarteaming.com). I built it and I run it, through my company MBP Enterprises Ltd.
 
-## Context
-Smarteaming is a production SaaS platform used to manage team
-scheduling, availability, and shifts.
+The code is private. This page explains what Smarteaming does and how it's built.
 
-The product is developed and operated by MBP Enterprises Ltd
-and is available at https://smarteaming.com.
+## What it does
+
+Companies with shift-based teams were planning in spreadsheets and group chats. Then they typed the same data again for invoices and payroll. Smarteaming does all of it in one place: availability, schedules, shifts, invoices, payroll and Dimona declarations (the Belgian employment registration).
 
 ## My role
-I designed, built, deployed, and operate the full system end-to-end:
-- Mobile apps (iOS & Android)
-- Web frontend
-- Backend API
-- Infrastructure and deployment
-- Ongoing maintenance
 
-## Scope
-What I built:
-- Mobile application (Expo / React Native)
-- Web frontend
-- Backend services and APIs
-- Authentication & access control
-- VPS setup and deployment on DigitalOcean
+I'm the only engineer. I built the backend, the web app and the mobile apps, I run the servers, and I fix things when they break.
 
-What I did not build:
-- Branding & marketing assets (if true)
-- Sales operations (if true)
+## How it's built
 
-## Architecture (high-level)
-- Mobile apps (iOS / Android via Expo)
-- Web frontend
-- Backend API (VPS-hosted)
-- Database
-- Auth layer
-- Deployment on DigitalOcean
+- **API:** Node.js and Express, on MySQL with hand-written SQL (no ORM). Socket.IO pushes schedule changes in real time, and scheduled jobs send reminders.
+- **Web app:** React and TypeScript, in English, French and Dutch. It's a static build, hosted on Hostinger.
+- **Mobile apps:** iOS and Android, built with React Native (Expo). They wrap the web app and add push notifications, file downloads and offline detection.
+- **Hosting:** the API runs on a DigitalOcean server behind Nginx, managed with PM2.
 
-(Diagram or description can be added here)
+## In production
 
-## Technologies
-- Mobile: Expo / React Native
-- Frontend: React
-- Backend: (Node.js / framework you used)
-- Infrastructure: Docker, DigitalOcean VPS
-- Database: (Postgres / Mongo / etc.)
+- About ten client companies and a few hundred users.
+- Multi-tenant, with payroll and social-security data that can't be wrong.
+- The API server has rebooted three times since August 2023, each time for under two minutes.
+- Operations are written down: a deployment runbook, a decision log and a list of known issues.
 
-## Outcomes
-- Live production system
-- Actively maintained
-- Commercial SaaS product
+## More
 
-## Why the code is private
-The codebase is proprietary and actively developed as part of a
-commercial product.
+I'm happy to walk through the architecture in an interview.
 
-Architecture discussions, screenshots, or demos can be shared on request.
-
-## Status
-Production.
-
-More information:
-→ https://smarteaming.com  
-→ https://mbp-enterprises.com
+- Portfolio: [mbp-enterprises.com](https://mbp-enterprises.com/work)
+- LinkedIn: [Mathias Pellegrin](https://www.linkedin.com/in/mathiasp-793332239/)
+- Email: mathias.pellegrin.pro@gmail.com
